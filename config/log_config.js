@@ -14,33 +14,6 @@ const responsePath = '/response';
 const responseFileName = 'response';
 // 响应日志输出完整路径
 const responseLogPath = baseLogPath + responsePath + "/" + responseFileName;
-
-// module.exports = {
-//     'appenders': [
-//         {
-//             'category' : 'errorLogger',
-//             'type' : 'dateFile',
-//             'filename' : errorLogPath,
-//             'alwaysIncludePattern' : true,
-//             'pattern' : '-yyyy-MM-dd-hh.log',
-//             'path': errorPath                     
-//         },
-//         {
-//             'category' : 'resLogger',
-//             'type' : 'dateFile',
-//             'filename' : responseLogPath,
-//             'alwaysIncludePattern' : true,
-//             'pattern' : '-yyyy-MM-dd-hh.log',
-//             'path' : responsePath   
-//         }
-//     ],
-//     'levels':{
-//         'errorLogger':'ERROR',
-//         'resLogger':'ALL'
-//     },
-//     'baseLogPath':baseLogPath
-// }
-
 module.exports = {
     appenders: {
         errorLogger: {
