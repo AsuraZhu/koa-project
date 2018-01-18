@@ -25,17 +25,25 @@ app.use(views(__dirname + '/views', {
 
 // logger
 app.use(async (ctx, next) => {
-  const start = new Date()
-  let ms;
-  try {
+  if(process.env.NODE_ENV === "prod"){
+    const start = new Date()
+    let ms;
+    try {
+      await next();
+      ms = new Date() - start;
+      logUtil.logResponse(ctx, ms);
+    } catch (error) {
+      ms = new Date() - start;
+      logUtil.logError(ctx, error, ms);
+    }
+    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  } else {
+    const start = new Date();
     await next();
-    ms = new Date() - start;
-    logUtil.logResponse(ctx, ms);
-  } catch (error) {
-    ms = new Date() - start;
-    logUtil.logError(ctx, error, ms);
+    const ms = new Date() -start;
+    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
   }
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+ 
 })
 // app.use(async (ctx, next) => {
 //   const start = new Date()
