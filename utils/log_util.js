@@ -26,16 +26,12 @@ const formatRes = function(ctx, resTime) {
     logText += "\n" + "*************** response log start ***************" + "\n";
     //添加请求日志
     logText += formatReqLog(ctx.request, resTime);
-
     //响应状态码
     logText += "response status: " + ctx.status + "\n";
-
     //响应内容
     logText += "response body: " + "\n" + JSON.stringify(ctx.body) + "\n";
-
     //响应日志结束
     logText += "*************** response log end ***************" + "\n";
-
     return logText;
 }
 
@@ -57,21 +53,14 @@ const formatError = function (ctx, err, resTime) {
 }
 
 const formatReqLog = function (req, resTime) {
-
     let logText = new String();
-
     const method = req.method;
     //访问方法
     logText += "request method: " + method + "\n";
-
     //请求原始地址
     logText += "request originalUrl:  " + req.originalUrl + "\n";
-
     //客户端ip
     logText += "request client ip:  " + req.ip + "\n";
-
-    //开始时间
-   // const startTime;
     //请求参数
     if (method === 'GET') {
         logText += "request query:  " + JSON.stringify(req.query) + "\n";
@@ -82,7 +71,6 @@ const formatReqLog = function (req, resTime) {
     }
     //服务器响应时间
     logText += "response time: " + resTime + "\n";
-
     return logText;
 }
 
