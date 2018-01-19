@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>{% block title %}{% endblock %} - Example</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    {% block stylesheet %}{% endblock %}
 </head>
 <body>
     <header>
@@ -19,5 +20,6 @@
     <section role="main">
         {% block body %}{% endblock %}
     </section>
+    {% block script %}{% endblock %}
 </body>
 </html
