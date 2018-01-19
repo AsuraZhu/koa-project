@@ -1,4 +1,5 @@
 const router = require('koa-router')()
+const axios = require('axios');
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -7,7 +8,9 @@ router.get('/', async (ctx, next) => {
 })
 
 router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
+  let data = await axios.get('https://www.baidu.com')
+  ctx.cookies.set(data.headers['set-cookie'])
+  ctx.body = "asadas";
 })
 
 router.get('/json', async (ctx, next) => {
