@@ -1,6 +1,5 @@
 const router = require('koa-router')()
 const axios = require('axios');
-
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
